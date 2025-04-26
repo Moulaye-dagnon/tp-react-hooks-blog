@@ -60,12 +60,11 @@ Pour chaque exercice :
 
 _Votre réponse pour l'exercice 1 :_
 
-```
+
 Je viens de finir d'implementer les fonctionnalites de  Post list et la search Bar un ajouter l'api fecth pour recupere les data et une condition dans la function baseURl pour que si l'user remplit la bare de recherche la function doit changer de url
-!alt Apres le loading des data](ecran/1.png)
+![alt Apres le loading des data](ecran/1.png)
 ![ Apres l'utilisation de la search bar](ecran/2.png)
-[](https://github.com/Moulaye-dagnon/tp-react-hooks-blog/ecran/2.png)n]
-```
+
 
 ### Exercice 2 : Hooks Personnalisés
 
