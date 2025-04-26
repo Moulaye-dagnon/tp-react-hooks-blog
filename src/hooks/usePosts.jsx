@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 // TODO: Exercice 2 - Importer useDebounce
 
 /**
@@ -10,44 +10,54 @@ import { useState, useEffect } from 'react';
  * @param {boolean} options.infinite - Mode de chargement infini vs pagination
  * @returns {Object} État et fonctions pour gérer les posts
  */
-function usePosts({ searchTerm = '', tag = '', limit = 10, infinite = true } = {}) {
+function usePosts({
+  searchTerm = "",
+  tag = "",
+  limit = 10,
+  infinite = true,
+} = {}) {
   // État local pour les posts
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  
   // TODO: Exercice 1 - Ajouter les états nécessaires pour la pagination
-  
+
   // TODO: Exercice 4 - Ajouter l'état pour le post sélectionné
-  
+
   // TODO: Exercice 2 - Utiliser useDebounce pour le terme de recherche
-  
+
   // TODO: Exercice 3 - Utiliser useCallback pour construire l'URL de l'API
   const buildApiUrl = (skip = 0) => {
     // Construire l'URL en fonction des filtres
-    return 'https://dummyjson.com/posts';
+    if (searchTerm) return `https://dummyjson.com/posts/search?q=${searchTerm}`;
+    return `https://dummyjson.com/posts`;
   };
-  
+
   // TODO: Exercice 1 - Implémenter la fonction pour charger les posts
   const fetchPosts = async (reset = false) => {
     try {
       setLoading(true);
+      fetch(buildApiUrl())
+        .then((res) => res.json())
+        .then((res) => setPosts(res.posts));
       // Appeler l'API et mettre à jour les états
     } catch (err) {
+      console.log(err);
       setError(err.message);
     } finally {
       setLoading(false);
     }
   };
-  
+
   // TODO: Exercice 1 - Utiliser useEffect pour charger les posts quand les filtres changent
-  
+  useEffect(() => {
+    fetchPosts();
+  }, [searchTerm]);
   // TODO: Exercice 4 - Implémenter la fonction pour charger plus de posts
-  
+
   // TODO: Exercice 3 - Utiliser useMemo pour calculer les tags uniques
-  
+
   // TODO: Exercice 4 - Implémenter la fonction pour charger un post par son ID
-  
   return {
     posts,
     loading,
