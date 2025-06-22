@@ -60,9 +60,12 @@ Pour chaque exercice :
 
 _Votre réponse pour l'exercice 1 :_
 
-Je viens de finir d'implementer les fonctionnalites de Post list et la search Bar un ajouter l'api fecth pour recupere les data et une condition dans la function baseURl pour que si l'user remplit la bare de recherche la function doit changer de url
+
+
+Je viens de finir d'implementer les fonctionnalites de  Post list et la search Bar un ajouter l'api fecth pour recupere les data et une condition dans la function baseURl pour que si l'user remplit la bare de recherche la function doit changer de url
 ![alt Apres le loading des data](ecran/1.png)
 ![ Apres l'utilisation de la search bar](ecran/2.png)
+
 
 ### Exercice 2 : Hooks Personnalisés
 
@@ -95,6 +98,7 @@ _Votre réponse pour l'exercice 3 :_
 ```
 
 Expliquez votre solution ici
+
 
 ```
 
