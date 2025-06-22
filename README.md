@@ -79,7 +79,7 @@ Le hook personnalisé Usedebounce est un hook React qui simplifie le déboucheme
 
 Le hook personnalisé Uselocalstorage est un hook qui simplifie le travail avec le storage local du navigateur. Il vous permet de stocker, de récupérer et de mettre à jour les valeurs dans LocalStorage tout en gardant votre état de réaction en synchronisation.le search sera retarder de 500 miniseconde apres chaque frape
 
-![video  ](ecran/2.png)
+![video  ](ecran/3.gif)
 
 ### Exercice 3 : Optimisation et Context
 
