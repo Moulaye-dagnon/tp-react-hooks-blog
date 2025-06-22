@@ -60,10 +60,9 @@ Pour chaque exercice :
 
 _Votre réponse pour l'exercice 1 :_
 
-```
-Expliquez votre solution ici
-[Ajoutez vos captures d'écran]
-```
+Je viens de finir d'implementer les fonctionnalites de Post list et la search Bar un ajouter l'api fecth pour recupere les data et une condition dans la function baseURl pour que si l'user remplit la bare de recherche la function doit changer de url
+![alt Apres le loading des data](ecran/1.png)
+![ Apres l'utilisation de la search bar](ecran/2.png)
 
 ### Exercice 2 : Hooks Personnalisés
 
@@ -76,11 +75,11 @@ Expliquez votre solution ici
 
 _Votre réponse pour l'exercice 2 :_
 
-```
-Je viens de finir d'implementer les fonctionnalites de  Post list et la search Bar un ajouter l'api fecth pour recupere les data et une condition dans la function baseURl pour que si l'user remplit la bare de recherche la function doit changer de url
+Le hook personnalisé Usedebounce est un hook React qui simplifie le débouchement. Il résume la logique requise pour retarder les mises à jour et vous fournit une valeur débouchée que vous pouvez utiliser dans vos composants.
 
-[Ajoutez vos captures d'écran]
-```
+Le hook personnalisé Uselocalstorage est un hook qui simplifie le travail avec le storage local du navigateur. Il vous permet de stocker, de récupérer et de mettre à jour les valeurs dans LocalStorage tout en gardant votre état de réaction en synchronisation.le search sera retarder de 500 miniseconde apres chaque frape
+
+![video  ](ecran/3.pm4)
 
 ### Exercice 3 : Optimisation et Context
 
@@ -94,10 +93,8 @@ Je viens de finir d'implementer les fonctionnalites de  Post list et la search B
 _Votre réponse pour l'exercice 3 :_
 
 ```
-Expliquez votre solution ici
 
-![alt Quand les donnees sont charger ](https://github.com/Moulaye-dagnon/tp-react-hooks-blog/ecran/1.png)
-![alt Apres l'utilisation de la search bar](https://github.com/Moulaye-dagnon/tp-react-hooks-blog/ecran/2.png)
+Expliquez votre solution ici
 
 ```
 
@@ -113,36 +110,40 @@ Expliquez votre solution ici
 _Votre réponse pour l'exercice 4 :_
 
 ```
+
 Expliquez votre solution ici
 [Ajoutez vos captures d'écran]
+
 ```
 
 ## Structure détaillée du projet
 
 ```
+
 📁 ./
 ├─ 📄 README.md
 ├─ 📄 package.json
 ├─ 📁 public/
-│  └─ 📄 index.html
+│ └─ 📄 index.html
 └─ 📁 src/
-   ├─ 📄 App.js               # Composant principal de l'application
-   ├─ 📄 App.css              # Styles CSS de l'application
-   ├─ 📁 components/
-   │  ├─ 📄 PostList.js       # Liste des posts
-   │  ├─ 📄 PostSearch.js     # Barre de recherche
-   │  ├─ 📄 PostDetails.js    # Détails d'un post
-   │  ├─ 📄 ThemeToggle.js    # Bouton pour changer de thème
-   │  └─ 📄 LoadingSpinner.js # Indicateur de chargement
-   ├─ 📁 hooks/
-   │  ├─ 📄 usePosts.js       # Hook pour gérer les posts
-   │  ├─ 📄 useDebounce.js    # Hook pour débouncer les valeurs
-   │  ├─ 📄 useLocalStorage.js # Hook pour gérer le localStorage
-   │  └─ 📄 useIntersectionObserver.js # Hook pour le chargement infini
-   ├─ 📁 context/
-   │  └─ 📄 ThemeContext.js   # Contexte pour le thème
-   ├─ 📄 index.css
-   └─ 📄 index.js
+├─ 📄 App.js # Composant principal de l'application
+├─ 📄 App.css # Styles CSS de l'application
+├─ 📁 components/
+│ ├─ 📄 PostList.js # Liste des posts
+│ ├─ 📄 PostSearch.js # Barre de recherche
+│ ├─ 📄 PostDetails.js # Détails d'un post
+│ ├─ 📄 ThemeToggle.js # Bouton pour changer de thème
+│ └─ 📄 LoadingSpinner.js # Indicateur de chargement
+├─ 📁 hooks/
+│ ├─ 📄 usePosts.js # Hook pour gérer les posts
+│ ├─ 📄 useDebounce.js # Hook pour débouncer les valeurs
+│ ├─ 📄 useLocalStorage.js # Hook pour gérer le localStorage
+│ └─ 📄 useIntersectionObserver.js # Hook pour le chargement infini
+├─ 📁 context/
+│ └─ 📄 ThemeContext.js # Contexte pour le thème
+├─ 📄 index.css
+└─ 📄 index.js
+
 ```
 
 ## Ressources utiles
@@ -169,7 +170,9 @@ Pour réaliser ce TP, vous utiliserez l'API dummyjson.com qui fournit des donné
 ### Récupérer tous les posts
 
 ```
+
 GET https://dummyjson.com/posts
+
 ```
 
 Paramètres de requête optionnels :
@@ -182,7 +185,9 @@ Exemple : `https://dummyjson.com/posts?limit=10&skip=10`
 ### Récupérer un post spécifique
 
 ```
+
 GET https://dummyjson.com/posts/{id}
+
 ```
 
 Exemple : `https://dummyjson.com/posts/1`
@@ -190,7 +195,9 @@ Exemple : `https://dummyjson.com/posts/1`
 ### Rechercher des posts
 
 ```
+
 GET https://dummyjson.com/posts/search?q={terme}
+
 ```
 
 Exemple : `https://dummyjson.com/posts/search?q=love`
@@ -198,7 +205,9 @@ Exemple : `https://dummyjson.com/posts/search?q=love`
 ### Récupérer les posts par tag
 
 ```
+
 GET https://dummyjson.com/posts/tag/{tag}
+
 ```
 
 Exemple : `https://dummyjson.com/posts/tag/history`
