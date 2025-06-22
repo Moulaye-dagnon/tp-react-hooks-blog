@@ -60,12 +60,9 @@ Pour chaque exercice :
 
 _Votre réponse pour l'exercice 1 :_
 
-
-
-Je viens de finir d'implementer les fonctionnalites de  Post list et la search Bar un ajouter l'api fecth pour recupere les data et une condition dans la function baseURl pour que si l'user remplit la bare de recherche la function doit changer de url
+Je viens de finir d'implementer les fonctionnalites de Post list et la search Bar un ajouter l'api fecth pour recupere les data et une condition dans la function baseURl pour que si l'user remplit la bare de recherche la function doit changer de url
 ![alt Apres le loading des data](ecran/1.png)
 ![ Apres l'utilisation de la search bar](ecran/2.png)
-
 
 ### Exercice 2 : Hooks Personnalisés
 
@@ -82,7 +79,7 @@ Le hook personnalisé Usedebounce est un hook React qui simplifie le déboucheme
 
 Le hook personnalisé Uselocalstorage est un hook qui simplifie le travail avec le storage local du navigateur. Il vous permet de stocker, de récupérer et de mettre à jour les valeurs dans LocalStorage tout en gardant votre état de réaction en synchronisation.le search sera retarder de 500 miniseconde apres chaque frape
 
-![video  ](ecran/3.mp4)
+![video  ](https://github.com/Moulaye-dagnon/tp-react-hooks-blog/blob/main/ecran/3.mp4)
 
 ### Exercice 3 : Optimisation et Context
 
