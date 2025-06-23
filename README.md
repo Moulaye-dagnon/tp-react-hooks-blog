@@ -111,7 +111,7 @@ Cet exercice concerne l'ajout de fonctionnalités avancées
 
 useIntersectionObserve pour permetre qaund un element est visible sur l'ecran
 Dans le postDetail on a afficher les contenu
-![ ](ecran/5.png)
+![ ](ecran/6.png)
 
 ## Structure détaillée du projet
 
