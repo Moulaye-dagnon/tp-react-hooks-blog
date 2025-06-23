@@ -92,12 +92,9 @@ Le hook personnalisé Uselocalstorage est un hook qui simplifie le travail avec 
 
 _Votre réponse pour l'exercice 3 :_
 
-```
+J'ai ajouter le themeContext avec les options clair/sombre et j'ai implementé les componsants postlist et postDetails avec les hooks useCallback et useMemo pour optimiser les perfs. Le theme est mis dans le localStorage
 
-Expliquez votre solution ici
-
-
-```
+![ J'ai mis a l'option sombre](ecran/4.png)
 
 ### Exercice 4 : Fonctionnalités avancées
 

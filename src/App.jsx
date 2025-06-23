@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import "./App.css";
 import PostList from "./components/PostList";
 import PostSearch from "./components/PostSearch";
 import usePosts from "./hooks/usePosts";
+import ThemeToggle from "./components/ThemeToggle";
+import { useTheme } from "./context/ThemeContext";
 // TODO: Exercice 3 - Importer ThemeToggle
 // TODO: Exercice 3 - Importer ThemeProvider et useTheme
 // TODO: Exercice 1 - Importer le hook usePosts
@@ -24,15 +26,22 @@ function App() {
   const handleSearchChange = (term) => {
     setSearchTerm(term);
   };
-
-  // TODO: Exercice 4 - Ajouter le gestionnaire pour la sélection de tag
+  const { theme } = useTheme();
+  const themeClasses = useMemo(() => {
+    return {
+      card: theme === "light" ? "bg-light" : "bg-dark text-white",
+      badge: theme === "light" ? "bg-secondary" : "bg-primary",
+      button:
+        theme === "light" ? "btn-outline-secondary" : "btn-outline-primary",
+    };
+  }, [theme]); // TODO: Exercice 4 - Ajouter le gestionnaire pour la sélection de tag
 
   return (
-    <div className="container py-4">
+    <div className={`container py-4 ${theme === "dark" && "sombre"} `}>
       <header className="pb-3 mb-4 border-bottom">
         <div className="d-flex justify-content-between align-items-center">
           <h1 className="display-5 fw-bold">Blog</h1>
-          {/* TODO: Exercice 3 - Ajouter le ThemeToggle */}
+          <ThemeToggle />
         </div>
       </header>
 

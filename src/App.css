@@ -1,22 +1,35 @@
 /* Styles pour l'application de blog */
 
 /* Transitions douces pour les changements de thème */
-body, 
-.card, 
-.btn, 
-.form-control, 
+body,
+.card,
+.btn,
+.form-control,
 .badge {
-  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease;
+}
+body.sombre {
+  background-color: #373636;
+  color: #fff;
 }
 
 /* Hauteur minimale pour assurer une mise en page cohérente */
 .container {
   min-height: 100vh;
 }
+.container.sombre {
+  background-color: #373636;
+  color: #fff;
+}
 
 /* Styles pour les cartes de posts */
 .card {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.card.sombre {
+  background-color: rgb(31, 31, 138);
+  color: #fff;
 }
 
 .card:hover {
@@ -41,6 +54,10 @@ body,
 .post-list .card,
 .badge[onClick] {
   cursor: pointer;
+}
+.post-list.sombre {
+  background-color: #373636;
+  color: #fff;
 }
 
 /* Styles pour les vignettes de posts */

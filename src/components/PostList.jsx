@@ -3,6 +3,7 @@ import React from "react";
 // TODO: Exercice 4 - Importer useIntersectionObserver
 import LoadingSpinner from "./LoadingSpinner";
 import PostDetails from "./PostDetails";
+import { useTheme } from "../context/ThemeContext";
 
 /**
  * Composant d'affichage de la liste des posts
@@ -43,9 +44,8 @@ function PostList({
   };
 
   // TODO: Exercice 1 - Gérer le cas où il n'y a pas de posts
-
   return (
-    <div className="post-list">
+    <div className={`post-list  `}>
       {posts && posts.map((post) => <PostDetails key={post.id} post={post} />)}
 
       {/* Afficher le spinner de chargement */}
