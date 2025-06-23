@@ -1,10 +1,11 @@
-import React, { useMemo, useState } from "react";
+import React, { useCallback, useMemo, useState } from "react";
 import "./App.css";
 import PostList from "./components/PostList";
 import PostSearch from "./components/PostSearch";
 import usePosts from "./hooks/usePosts";
 import ThemeToggle from "./components/ThemeToggle";
 import { useTheme } from "./context/ThemeContext";
+import useLocalStorage from "./hooks/useLocalStorage";
 // TODO: Exercice 3 - Importer ThemeToggle
 // TODO: Exercice 3 - Importer ThemeProvider et useTheme
 // TODO: Exercice 1 - Importer le hook usePosts
@@ -13,10 +14,18 @@ import { useTheme } from "./context/ThemeContext";
 function App() {
   // État local pour la recherche
   const [searchTerm, setSearchTerm] = useState("");
+  const [scrollMode, setScrollMode] = useLocalStorage("scroll", "infinite");
+  const [Tagselected, setTagSelected] = useState("");
+  const [page, setPage] = useState(1);
+
   // TODO: Exercice 4 - Ajouter l'état pour le tag sélectionné
 
   // TODO: Exercice 1 - Utiliser le hook usePosts pour récupérer les posts
-  const { posts, loading, error } = usePosts({ searchTerm });
+  const { posts, loading, error, loadMore, hasMore } = usePosts({
+    searchTerm,
+    tag: Tagselected,
+    limit: 10,
+  });
 
   // TODO: Exercice 2 - Utiliser useLocalStorage pour le mode de défilement
 
@@ -26,16 +35,19 @@ function App() {
   const handleSearchChange = (term) => {
     setSearchTerm(term);
   };
+  const handleScrollModeChange = useCallback((c) => {
+    setScrollMode(c);
+  }, []);
+  const handleLoadMore = useCallback(() => {
+    if (loadMore && !loading) {
+      loadMore();
+    }
+  }, [loadMore, loading]);
   const { theme } = useTheme();
-  const themeClasses = useMemo(() => {
-    return {
-      card: theme === "light" ? "bg-light" : "bg-dark text-white",
-      badge: theme === "light" ? "bg-secondary" : "bg-primary",
-      button:
-        theme === "light" ? "btn-outline-secondary" : "btn-outline-primary",
-    };
-  }, [theme]); // TODO: Exercice 4 - Ajouter le gestionnaire pour la sélection de tag
-
+  // TODO: Exercice 4 - Ajouter le gestionnaire pour la sélection de tag
+  const handleTagSelected = useCallback((tag) => {
+    setTagSelected(tag);
+  }, []);
   return (
     <div className={`container py-4 ${theme === "dark" && "sombre"} `}>
       <header className="pb-3 mb-4 border-bottom">
@@ -46,14 +58,26 @@ function App() {
       </header>
 
       <main>
-        <PostSearch onSearch={handleSearchChange} />
+        <PostSearch
+          onTagSelect={handleTagSelected}
+          onSearch={handleSearchChange}
+          selectedTag={Tagselected}
+          availableTags={["science", "post"]}
+        />
 
         {/* TODO: Exercice 1 - Afficher un message d'erreur si nécessaire */}
 
         {/* TODO: Exercice 4 - Ajouter le composant PostDetails */}
 
         {/* TODO: Exercice 1 - Passer les props nécessaires à PostList */}
-        <PostList posts={posts} loading={loading} />
+        <PostList
+          posts={posts}
+          loading={loading}
+          hasMore={hasMore}
+          onLoadMore={handleLoadMore}
+          onTagClick={handleTagSelected}
+          infiniteScroll={scrollMode === "infinite"}
+        />
       </main>
 
       <footer className="pt-3 mt-4 text-center border-top">

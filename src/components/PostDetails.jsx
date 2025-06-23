@@ -38,10 +38,17 @@ function PostDetails({ post, onClose, onTagClick }) {
       </div>
 
       <div className="card-body">
+        <p>{post.body}</p>
+        <div className="d-flex justify-content-between align-items-center">
+          <div>
+            <span className="me-2"> {post.reactions.likes} likes</span>
+            <span className="me-2"> {post.reactions.dislikes} dislikes</span>
+            <span> {post.userId} user</span>
+          </div>
+          <div>{post.tags && post.tags.map((tag) => tag)}</div>
+        </div>
         {/* TODO: Exercice 4 - Afficher le contenu du post */}
-
         {/* TODO: Exercice 4 - Afficher les réactions et l'utilisateur */}
-
         {/* TODO: Exercice 4 - Afficher les tags */}
       </div>
     </div>

@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from "react";
 
 /**
  * Hook personnalisé pour détecter quand un élément devient visible dans le viewport
@@ -11,15 +11,38 @@ import { useState, useEffect, useRef } from 'react';
 function useIntersectionObserver({
   enabled = true,
   threshold = 0.1,
-  rootMargin = '0px'
+  rootMargin = "0px",
 } = {}) {
   // TODO: Exercice 4 - Implémenter le hook useIntersectionObserver
   // 1. Créer un état pour suivre l'intersection
   // 2. Créer une référence pour l'élément à observer
   // 3. Configurer l'IntersectionObserver dans un useEffect
   // 4. Retourner la référence et l'état d'intersection
-  
-  return [null, false]; // À modifier
+
+  const [isIntersected, setIsIntersected] = useState(false);
+  const targetRef = useRef(null);
+
+  useEffect(() => {
+    if (!enabled || !targetRef.current) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        setIsIntersected(entries[0].isIntersecting);
+      },
+      {
+        threshold,
+        rootMargin,
+      }
+    );
+
+    observer.observe(targetRef.current);
+
+    return () => observer.disconnect();
+  }, [enabled, threshold, rootMargin]);
+
+  return [targetRef, isIntersected];
 }
 
 export default useIntersectionObserver;

@@ -22,21 +22,22 @@ function usePosts({
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const debouncedValue = useDebounce(searchTerm);
-
+  const [hasMore, setHasMore] = useState(true);
   // TODO: Exercice 1 - Ajouter les états nécessaires pour la pagination
+  const [skip, setSkip] = useState(0);
 
-  // TODO: Exercice 4 - Ajouter l'état pour le post sélectionné
+  // TODO	: Exercice 4 - Ajouter l'état pour le post sélectionné
 
   // TODO: Exercice 2 - Utiliser useDebounce pour le terme de recherche
   //   const debouncedValue = useDebounce({ searchTerm });
   //   console.log(debouncedValue.searchTerm);
 
   // TODO: Exercice 3 - Utiliser useCallback pour construire l'URL de l'API
-  const buildApiUrl = (skip = 0) => {
+  const buildApiUrl = () => {
     // Construire l'URL en fonction des filtres
     if (debouncedValue)
-      return `https://dummyjson.com/posts/search?q=${debouncedValue}  `;
-    return `https://dummyjson.com/posts`;
+      return `https://dummyjson.com/posts/search?q=${debouncedValue}&limit=${limit}&skip=${skip}`;
+    return `https://dummyjson.com/posts?limit=${limit}&skip=${skip}`;
   };
 
   // TODO: Exercice 1 - Implémenter la fonction pour charger les posts
@@ -45,7 +46,18 @@ function usePosts({
       setLoading(true);
       fetch(buildApiUrl())
         .then((res) => res.json())
-        .then((res) => setPosts(res.posts));
+        .then((data) => {
+          const newPosts = data.posts || [];
+
+          setPosts((prev) => (reset ? newPosts : [...prev, ...newPosts]));
+
+          // Vérifie s’il reste encore des posts à charger
+          if (newPosts.length < limit) {
+            setHasMore(false);
+          } else {
+            setHasMore(true);
+          }
+        });
       // Appeler l'API et mettre à jour les états
     } catch (err) {
       console.log(err);
@@ -57,9 +69,20 @@ function usePosts({
 
   // TODO: Exercice 1 - Utiliser useEffect pour charger les posts quand les filtres changent
   useEffect(() => {
-    fetchPosts();
+    setSkip(0);
+    setHasMore(true);
+    fetchPosts(true);
   }, [debouncedValue]);
+
+  useEffect(() => {
+    if (skip > 0) {
+      fetchPosts();
+    }
+  }, [skip]);
   // TODO: Exercice 4 - Implémenter la fonction pour charger plus de posts
+  const loadMore = () => {
+    setSkip((prev) => prev + limit);
+  };
 
   // TODO: Exercice 3 - Utiliser useMemo pour calculer les tags uniques
 
@@ -68,6 +91,9 @@ function usePosts({
     posts,
     loading,
     error,
+    loadMore,
+    hasMore,
+
     // Retourner les autres états et fonctions
   };
 }

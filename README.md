@@ -107,12 +107,11 @@ J'ai ajouter le themeContext avec les options clair/sombre et j'ai implementé l
 
 _Votre réponse pour l'exercice 4 :_
 
-```
+Cet exercice concerne l'ajout de fonctionnalités avancées
 
-Expliquez votre solution ici
-[Ajoutez vos captures d'écran]
-
-```
+useIntersectionObserve pour permetre qaund un element est visible sur l'ecran
+Dans le postDetail on a afficher les contenu
+![ ](ecran/5.png)
 
 ## Structure détaillée du projet
 
